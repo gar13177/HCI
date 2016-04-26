@@ -1,6 +1,23 @@
 <resources>
     <string name="app_name">HCI</string>
     <string name="title_activity_car_element">CarElementActivity</string>
+    <string-array name="car_elements">
+        <item name="element_1">Check Engine</item>
+        <item name = "element_2">Brake</item>
+    </string-array>
+
+    <string-array name = "element_1_rows">
+        <item name = "row_1">Errores1</item>
+        <item name = "row_2">Errores2</item>
+        <item name = "row_3">Errores3</item>
+        <item name = "row_4">Errores4</item>
+        <item name = "row_5">Errores5</item>
+        <item name = "row_6">Errores6</item>
+        <item name = "row_7">Errores7</item>
+        <item name = "row_8">Errores8</item>
+
+    </string-array>
+
     <string name="large_text">
         "Material is the metaphor.\n\n"
 
@@ -90,5 +107,6 @@
         "For example, position the FAB to one side of stream of a cards so the FAB won’t interfere "
         "when a user tries to pick up one of cards.\n\n"
     </string>
+
     <string name="action_settings">Settings</string>
 </resources>
