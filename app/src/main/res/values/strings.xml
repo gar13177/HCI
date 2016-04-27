@@ -2,8 +2,12 @@
     <string name="app_name">HCI</string>
     <string name="title_activity_car_element">CarElementActivity</string>
     <string-array name="car_elements">
-        <item name="element_1">Check Engine</item>
-        <item name = "element_2">Brake</item>
+        <item name = "element_1">Barke System</item>
+        <item name = "element_2">Emissions Control Lamp</item>
+        <item name = "element_3">Engine Oil Level</item>
+        <item name = "element_4">Doors</item>
+        <item name = "element_5">Fuel Level</item>
+        <item name = "element_6">Engine Cooling System</item>
     </string-array>
 
     <string-array name = "element_1_rows">

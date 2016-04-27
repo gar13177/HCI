@@ -13,9 +13,12 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.FrameLayout;
+import android.widget.ImageView;
 import android.widget.ListView;
 
 public class CarElementActivity extends AppCompatActivity {
+
+
 
     int color = 2;
 
@@ -31,6 +34,9 @@ public class CarElementActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setTitle("Prueba");
+
+        ImageView iv = (ImageView)findViewById(R.id.main_imageview_placeholder);
+        iv.setImageResource(R.drawable.brake_system);
 
         //getSupportActionBar().setBackgroundDrawable(new ColorDrawable(Color.parseColor("#ffffff")));
         //setSupportActionBar(toolbar);
@@ -57,20 +63,26 @@ public class CarElementActivity extends AppCompatActivity {
 
     public void setColor(int i){
         CollapsingToolbarLayout ctl = (CollapsingToolbarLayout)findViewById(R.id.toolbar_layout);
-        AppBarLayout fl = (AppBarLayout)findViewById(R.id.app_bar);
+        //AppBarLayout fl = (AppBarLayout)findViewById(R.id.app_bar);
 
 
         if (i == 0){//rojo
             ctl.setContentScrimColor(Color.RED);
-            fl.setBackgroundColor(Color.RED);
+            ctl.setBackgroundColor(Color.RED);
+            ctl.setStatusBarScrimColor(Color.RED);
+            //fl.setBackgroundColor(Color.RED);
 
         }else if (i == 1){//naranja
             ctl.setContentScrimColor(Color.parseColor("#FFE57219"));
-            fl.setBackgroundColor(Color.parseColor("#FFE57219"));
+            ctl.setBackgroundColor(Color.parseColor("#FFE57219"));
+            ctl.setStatusBarScrimColor(Color.parseColor("#FFE57219"));
+            //fl.setBackgroundColor(Color.parseColor("#FFE57219"));
 
         }else{
             ctl.setContentScrimColor(Color.parseColor("#FF1D8DCE"));
-            fl.setBackgroundColor(Color.parseColor("#FF1D8DCE"));
+            ctl.setBackgroundColor(Color.parseColor("#FF1D8DCE"));
+            ctl.setStatusBarScrimColor(Color.parseColor("#FF1D8DCE"));
+            //fl.setBackgroundColor(Color.parseColor("#FF1D8DCE"));
         }
 
 
