@@ -1,18 +1,14 @@
 package com.example.kevin.hci;
 
-import android.app.Activity;
-import android.content.res.ColorStateList;
+import android.content.Intent;
 import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
-import android.support.design.widget.AppBarLayout;
 import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
-import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.ListView;
 
@@ -20,23 +16,25 @@ public class CarElementActivity extends AppCompatActivity {
 
 
 
-    int color = 2;
+    private int color;
+    private String name ;
+    private ListView listView;
+    private String[] car_element_rows;
+    private int image;
 
-    CarElementAdapter cea;
-    ListView listView;
-
-    String[] car_elements;
-    String[] car_element_rows;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_car_element);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+
         getSupportActionBar().setTitle("Prueba");
 
         ImageView iv = (ImageView)findViewById(R.id.main_imageview_placeholder);
         iv.setImageResource(R.drawable.brake_system);
+        iv.setColorFilter(Color.BLACK);
 
         //getSupportActionBar().setBackgroundDrawable(new ColorDrawable(Color.parseColor("#ffffff")));
         //setSupportActionBar(toolbar);
@@ -46,24 +44,39 @@ public class CarElementActivity extends AppCompatActivity {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-                setColor(color);
-                color++;
-                if (color>2) color = 0;
+                //Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG).setAction("Action", null).show();
+                //setColor(getColor());
+                //setColor(getColor() + 1);
+                //if (getColor() > 2) setColor(0);
+                //Intent myIntent = new Intent(CarElementActivity.this, OptionsActivity.class);
+                //CarElementActivity.this.startActivity(myIntent);
+                CarElementActivity.this.finish();
+
             }
         });
 
-        //car_elements = getResources().getStringArray(R.array.car_elements);
-        car_element_rows = getResources().getStringArray(R.array.element_1_rows);
-        listView = (ListView)findViewById(R.id.list_car_elements);
-        listView.setAdapter(new CarElementAdapter(this,car_element_rows));
+        Bundle extras = getIntent().getExtras();
+        if (extras != null){
+            Intent myIntent = getIntent();
+            setColor(myIntent.getIntExtra("setColor", -1));
+            setName(myIntent.getStringExtra("setName"));
+            setCar_element_rows(myIntent.getStringArrayExtra("setCar_element_rows"));
+            setListViewMy();
+
+        }
 
     }
 
+    public void setListViewMy(){
+        setListView((ListView)findViewById(R.id.list_car_elements));
+        getListView().setAdapter(new CarElementAdapter(this, getCar_element_rows()));
+    }
+
     public void setColor(int i){
+        color = i;
         CollapsingToolbarLayout ctl = (CollapsingToolbarLayout)findViewById(R.id.toolbar_layout);
         //AppBarLayout fl = (AppBarLayout)findViewById(R.id.app_bar);
+
 
 
         if (i == 0){//rojo
@@ -86,5 +99,45 @@ public class CarElementActivity extends AppCompatActivity {
         }
 
 
+    }
+
+    public int getColor() {
+        return color;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+        getSupportActionBar().setTitle(name);
+    }
+
+    public ListView getListView() {
+        return listView;
+    }
+
+    public void setListView(ListView listView) {
+        this.listView = listView;
+    }
+
+    public String[] getCar_element_rows() {
+        return car_element_rows;
+    }
+
+    public void setCar_element_rows(String[] car_element_rows) {
+        this.car_element_rows = car_element_rows;
+    }
+
+    public int getImage() {
+        return image;
+    }
+
+    public void setImage(int image) {
+        this.image = image;
+        ImageView iv = (ImageView)findViewById(R.id.main_imageview_placeholder);
+        iv.setImageResource(image);
+        iv.setColorFilter(Color.BLACK);
     }
 }
