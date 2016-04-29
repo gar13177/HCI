@@ -1,9 +1,10 @@
 <resources>
     <string name="app_name">HCI</string>
     <string name="title_activity_car_element">CarElementActivity</string>
+    <string name="options_menu_name">Home</string>
 
     <string-array name="car_elements">
-        <item name="element_1">Barke System</item>
+        <item name="element_1">Brake System</item>
         <item name="element_2">Emissions Control Lamp</item>
         <item name="element_3">Engine Oil Level</item>
         <item name="element_4">Doors</item>
@@ -12,7 +13,7 @@
     </string-array>
 
     <string-array name="car_elements_information">
-        <item name="element_1">Barke System</item>
+        <item name="element_1">Brake System</item>
         <item name="element_2">Emissions Control Lamp</item>
         <item name="element_3">Engine Oil Level</item>
         <item name="element_4">Doors</item>

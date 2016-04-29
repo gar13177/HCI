@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent" android:layout_height="75dp"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="wrap_content"
     android:orientation="horizontal">
 
 
     <ImageView
         android:id="@+id/option_menu_image"
         android:layout_width="wrap_content"
-        android:layout_height="60dp"
+        android:layout_height="50dp"
         android:scaleType="centerCrop"
         android:src="@drawable/brake_system"
         android:adjustViewBounds="true"
@@ -15,21 +15,24 @@
 
     <TextView
         android:id="@+id/option_menu_name"
-        android:layout_width="100dp"
-        android:layout_height="70dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:text="Prueba"
-        android:textSize="18sp"
-        android:gravity="center_vertical"
+        android:textSize="20sp"
+        android:gravity="top"
         android:layout_toRightOf="@id/option_menu_image"
+        android:layout_marginLeft="20dp"
         />
     <TextView
         android:id="@+id/option_menu_information"
-        android:layout_width="100dp"
-        android:layout_height="70dp"
-        android:layout_toRightOf="@id/option_menu_name"
-        android:text="Prueba"
-        android:textSize="18sp"
-        android:gravity="center_vertical"
-        />
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/option_menu_image"
 
-</LinearLayout>
+        android:text="Prueba"
+        android:textSize="13sp"
+        android:gravity="top"
+        android:layout_below="@id/option_menu_name"
+        android:layout_marginLeft="20dp"/>
+
+</RelativeLayout>

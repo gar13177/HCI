@@ -9,6 +9,8 @@ import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.ListView;
 
@@ -61,9 +63,14 @@ public class CarElementActivity extends AppCompatActivity {
             setColor(myIntent.getIntExtra("setColor", -1));
             setName(myIntent.getStringExtra("setName"));
             setCar_element_rows(myIntent.getStringArrayExtra("setCar_element_rows"));
+            setImage(myIntent.getIntExtra("setImage",-1));
             setListViewMy();
 
         }
+
+
+
+
 
     }
 

@@ -6,8 +6,11 @@ import android.content.res.TypedArray;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.TextView;
 
 public class OptionsActivity extends AppCompatActivity {
 
@@ -23,7 +26,7 @@ public class OptionsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_options);
 
-        getSupportActionBar().setTitle("Opciones");
+        getSupportActionBar().setTitle(R.string.options_menu_name);
 
 
         name_rows = getResources().getStringArray(R.array.car_elements);
@@ -57,23 +60,25 @@ public class OptionsActivity extends AppCompatActivity {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
                 TypedArray evals = getResources().obtainTypedArray(R.array.car_elements_rows);
-                CharSequence[] str  = evals.getTextArray(position);
+                CharSequence[] str = evals.getTextArray(position);
                 String[] str2 = new String[str.length];
-                for (int j = 0; j<str.length; j++){
+                for (int j = 0; j < str.length; j++) {
                     str2[j] = str[j].toString();
                 }
 
                 Intent myIntent = new Intent(OptionsActivity.this, CarElementActivity.class);
-                myIntent.putExtra("setColor",position%3);
-                myIntent.putExtra("setName",name_rows[position]);
-                myIntent.putExtra("setCar_element_rows",str2);
-                myIntent.putExtra("setImage",images[position]);
+                myIntent.putExtra("setColor", position % 3);
+                myIntent.putExtra("setName", name_rows[position]);
+                myIntent.putExtra("setCar_element_rows", str2);
+                myIntent.putExtra("setImage", images[position]);
 
 
                 OptionsActivity.this.startActivity(myIntent);
                 //OptionsActivity.this.finish();
             }
         });
+
+
 
     }
 }
