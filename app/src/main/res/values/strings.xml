@@ -2,6 +2,8 @@
     <string name="app_name">HCI</string>
     <string name="title_activity_car_element">CarElementActivity</string>
     <string name="options_menu_name">Home</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
 
     <string-array name="car_elements">
         <item name="element_1">Brake System</item>
