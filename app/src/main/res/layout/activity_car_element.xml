@@ -13,8 +13,6 @@
         android:layout_height="@dimen/app_bar_height"
         android:fitsSystemWindows="true"
         android:theme="@style/AppTheme.AppBarOverlay"
-
-
         >
 
 
@@ -116,7 +114,7 @@
         </android.support.design.widget.CollapsingToolbarLayout>
     </android.support.design.widget.AppBarLayout>
 
-    <include layout="@layout/content_car_element" />
+    <include layout="@layout/content_activity" />
 
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/fab"

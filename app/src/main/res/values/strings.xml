@@ -5,6 +5,7 @@
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
 
+
     <string-array name="car_elements">
         <item name="element_1">Brake System</item>
         <item name="element_2">Emissions Control Lamp</item>
@@ -31,7 +32,6 @@
         <item>@drawable/fuel_level</item>
         <item>@drawable/engine_cooling_system</item>
     </string-array>
-
 
 
     <string-array name="element_1_rows">
@@ -82,4 +82,7 @@
 
 
     <string name="action_settings">Settings</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

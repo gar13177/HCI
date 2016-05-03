@@ -23,9 +23,9 @@ public class CarElementAdapter extends BaseAdapter {
     Context context;
     static LayoutInflater inflater = null;
 
-    public CarElementAdapter(CarElementActivity mainActivity, String[] car_element_rows){
+    public CarElementAdapter(View mainActivity, String[] car_element_rows){
         this.car_element_rows = car_element_rows;
-        context = mainActivity;
+        context = mainActivity.getContext();
         inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
     }
 

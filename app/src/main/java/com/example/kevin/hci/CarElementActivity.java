@@ -1,5 +1,9 @@
 package com.example.kevin.hci;
 
+
+import android.app.Fragment;
+import android.app.FragmentManager;
+import android.app.FragmentTransaction;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -24,23 +28,59 @@ public class CarElementActivity extends AppCompatActivity
             implements NavigationView.OnNavigationItemSelectedListener{
 
 
-
     private int color;
     private String name ;
     private ListView listView;
     private String[] car_element_rows;
     private int image;
+    Toolbar toolbar;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         //setContentView(R.layout.activity_car_element);
         setContentView(R.layout.activity_drawer);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+
+
+        toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
+                this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
+        drawer.setDrawerListener(toggle);
+        toggle.syncState();
 
-        getSupportActionBar().setTitle("Prueba");
+        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
+        navigationView.setNavigationItemSelectedListener(this);
+
+        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+        if (fab != null) {
+            fab.getBackgroundTintList();
+            fab.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    //Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG).setAction("Action", null).show();
+                    //setColor(getColor());
+                    //setColor(getColor() + 1);
+                    //if (getColor() > 2) setColor(0);
+                    //Intent myIntent = new Intent(CarElementActivity.this, OptionsActivity.class);
+                    //CarElementActivity.this.startActivity(myIntent);
+
+
+                }
+            });
+        }
+
+        OptionsFragment f1 = new OptionsFragment();
+        changeFragment(f1);
+
+
+
+
+        /*getSupportActionBar().setTitle("Prueba");
 
         ImageView iv = (ImageView)findViewById(R.id.main_imageview_placeholder);
         iv.setImageResource(R.drawable.brake_system);
@@ -74,24 +114,39 @@ public class CarElementActivity extends AppCompatActivity
             setImage(myIntent.getIntExtra("setImage",-1));
             setListViewMy();
 
+        }*/
+
+
+    }
+
+    public void changeFragment(Fragment f1){
+        FragmentManager fm = getFragmentManager();
+        FragmentTransaction ft = fm.beginTransaction();
+
+        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+        fab.setVisibility(View.VISIBLE);
+
+        Bundle bundle = f1.getArguments();
+        if (bundle != null) {
+
+            setColor(bundle.getInt("setColor"));
+            setName(bundle.getString("setName"));
+            setImage(bundle.getInt("setImage"));
+
+        }else if (f1 instanceof OptionsFragment){
+            fab.setVisibility(View.GONE);
+            setColor(2);
+
         }
 
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
-                this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
-        drawer.setDrawerListener(toggle);
-        toggle.syncState();
 
-        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
-        navigationView.setNavigationItemSelectedListener(this);
+
+        ft.replace(R.id.main_container, f1);
+        ft.commit();
+
     }
 
-    public void setListViewMy(){
-        setListView((ListView)findViewById(R.id.list_car_elements));
-        getListView().setAdapter(new CarElementAdapter(this, getCar_element_rows()));
-    }
-
-    public void setColor(int i){
+    public void setColor(int i) {
         color = i;
         CollapsingToolbarLayout ctl = (CollapsingToolbarLayout)findViewById(R.id.toolbar_layout);
         //AppBarLayout fl = (AppBarLayout)findViewById(R.id.app_bar);
@@ -99,21 +154,21 @@ public class CarElementActivity extends AppCompatActivity
 
 
         if (i == 0){//rojo
-            ctl.setContentScrimColor(Color.RED);
-            ctl.setBackgroundColor(Color.RED);
-            ctl.setStatusBarScrimColor(Color.RED);
+            ctl.setContentScrimColor(getResources().getColor(R.color.colorEmergency));
+            ctl.setBackgroundColor(getResources().getColor(R.color.colorEmergency));
+            ctl.setStatusBarScrimColor(getResources().getColor(R.color.colorEmergency));
             //fl.setBackgroundColor(Color.RED);
 
         }else if (i == 1){//naranja
-            ctl.setContentScrimColor(Color.parseColor("#FFE57219"));
-            ctl.setBackgroundColor(Color.parseColor("#FFE57219"));
-            ctl.setStatusBarScrimColor(Color.parseColor("#FFE57219"));
+            ctl.setContentScrimColor(getResources().getColor(R.color.colorWarning));
+            ctl.setBackgroundColor(getResources().getColor(R.color.colorWarning));
+            ctl.setStatusBarScrimColor(getResources().getColor(R.color.colorWarning));
             //fl.setBackgroundColor(Color.parseColor("#FFE57219"));
 
         }else{
-            ctl.setContentScrimColor(Color.parseColor("#FF1D8DCE"));
-            ctl.setBackgroundColor(Color.parseColor("#FF1D8DCE"));
-            ctl.setStatusBarScrimColor(Color.parseColor("#FF1D8DCE"));
+            ctl.setContentScrimColor(getResources().getColor(R.color.colorPrimary));
+            ctl.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
+            ctl.setStatusBarScrimColor(getResources().getColor(R.color.colorPrimary));
             //fl.setBackgroundColor(Color.parseColor("#FF1D8DCE"));
         }
 
@@ -130,27 +185,8 @@ public class CarElementActivity extends AppCompatActivity
 
     public void setName(String name) {
         this.name = name;
+        //mToolbar.setTitle(name);
         getSupportActionBar().setTitle(name);
-    }
-
-    public ListView getListView() {
-        return listView;
-    }
-
-    public void setListView(ListView listView) {
-        this.listView = listView;
-    }
-
-    public String[] getCar_element_rows() {
-        return car_element_rows;
-    }
-
-    public void setCar_element_rows(String[] car_element_rows) {
-        this.car_element_rows = car_element_rows;
-    }
-
-    public int getImage() {
-        return image;
     }
 
     public void setImage(int image) {

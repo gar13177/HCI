@@ -23,14 +23,14 @@ public class OptionsAdapter extends BaseAdapter {
     Context context;
     static LayoutInflater inflater = null;
 
-    public OptionsAdapter(OptionsActivity mainActivity, String[] options_rows, String[] information_rows, int[] image_resource){
+    public OptionsAdapter(View mainActivity, String[] options_rows, String[] information_rows, int[] image_resource){
         this.options_rows = options_rows;
         this.information_rows = information_rows;
         this.image_resource = image_resource;
 
 
 
-        context = mainActivity;
+        context = mainActivity.getContext();
         inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
     }
 

@@ -1,18 +1,24 @@
 package com.example.kevin.hci;
 
-import android.app.VoiceInteractor;
+
 import android.content.Intent;
 import android.content.res.TypedArray;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.app.Fragment;
+import android.app.FragmentManager;
+import android.app.FragmentTransaction;
+import android.support.v7.app.ActionBarActivity;
+import android.view.LayoutInflater;
 import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.AnimationUtils;
+import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ListView;
-import android.widget.TextView;
 
-public class OptionsActivity extends AppCompatActivity {
+
+/**
+ * A simple {@link Fragment} subclass.
+ */
+public class OptionsFragment extends Fragment {
 
     int color = 2;
     ListView listView;
@@ -21,13 +27,21 @@ public class OptionsActivity extends AppCompatActivity {
     String[] information_rows;
     CarElementActivity[] activities;
 
+    public OptionsFragment() {
+        // Required empty public constructor
+    }
+
+
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_options);
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+        // Inflate the layout for this fragment
 
-        getSupportActionBar().setTitle(R.string.options_menu_name);
+        View v = inflater.inflate(R.layout.fragment_options, container, false);
 
+
+
+        //((ActionBarActivity)getActivity()).getSupportActionBar().setTitle(R.string.options_menu_name);
 
         name_rows = getResources().getStringArray(R.array.car_elements);
         information_rows = getResources().getStringArray(R.array.car_elements_information);
@@ -52,8 +66,9 @@ public class OptionsActivity extends AppCompatActivity {
             activities[i].setListViewMy();
         }*/
 
-        listView = (ListView)findViewById(R.id.options_menu_list);
-        listView.setAdapter(new OptionsAdapter(this, name_rows, information_rows, images));
+
+        listView = (ListView)v.findViewById(R.id.options_menu_list);
+        listView.setAdapter(new OptionsAdapter(v, name_rows, information_rows, images));
 
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -66,19 +81,23 @@ public class OptionsActivity extends AppCompatActivity {
                     str2[j] = str[j].toString();
                 }
 
-                Intent myIntent = new Intent(OptionsActivity.this, CarElementActivity.class);
-                myIntent.putExtra("setColor", position % 3);
-                myIntent.putExtra("setName", name_rows[position]);
-                myIntent.putExtra("setCar_element_rows", str2);
-                myIntent.putExtra("setImage", images[position]);
+                CarElementFragment fragment2 = new CarElementFragment();
 
+                Bundle bundle = new Bundle();
+                bundle.putInt("setColor", position % 3);
+                bundle.putString("setName", name_rows[position]);
+                bundle.putStringArray("setCar_element_rows", str2);
+                bundle.putInt("setImage", images[position]);
 
-                OptionsActivity.this.startActivity(myIntent);
-                //OptionsActivity.this.finish();
+                fragment2.setArguments(bundle);
+
+                ((CarElementActivity)getActivity()).changeFragment(fragment2);
+
             }
         });
 
 
-
+        return v;
     }
+
 }
