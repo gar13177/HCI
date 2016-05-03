@@ -234,17 +234,11 @@ public class CarElementActivity extends AppCompatActivity
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
-        if (id == R.id.nav_camera) {
+        if (id == R.id.nav_profile) {
             // Handle the camera action
-        } else if (id == R.id.nav_gallery) {
-
-        } else if (id == R.id.nav_slideshow) {
-
+            Intent myIntent = new Intent(CarElementActivity.this, ProfileActivity.class);
+            CarElementActivity.this.startActivity(myIntent);
         } else if (id == R.id.nav_manage) {
-
-        } else if (id == R.id.nav_share) {
-
-        } else if (id == R.id.nav_send) {
 
         }
 
