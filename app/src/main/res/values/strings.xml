@@ -5,6 +5,31 @@
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
 
+    <string name="text_bluetooth_off">Bluetooth Apagado</string>
+    <string name="text_bluetooth_on">Bluetooth Encendido</string>
+
+    <string name="text_enable">Activar</string>
+    <string name="text_disable">Desactivar</string>
+
+    <string name="text_view_paired">Dispositivos pareados</string>
+    <string name="text_scan_devices">Buscar Dispositivos</string>
+    <string name="text_stop_scan">Scan Devices</string>
+
+    <string name="text_list_paired_devices">Dispositivos pareados</string>
+    <string name="text_list_devices">Lista de dispositivos</string>
+
+    <string name="text_pair">Pair</string>
+
+    <string-array name="bluetooth_devices">
+        <item name="element_1">BETO</item>
+        <item name="element_2">CHUSO</item>
+        <item name="element_3">FAMILIA 1</item>
+        <item name="element_4">Juanca iPhone</item>
+        <item name="element_5">MEX-N5150BT</item>
+        <item name="element_6">Automobile SK Bluetooth</item>
+        <item name="element_7">SRS-X33</item>
+        <item name="element_8">YET-M</item>
+    </string-array>
 
     <string-array name="car_elements">
         <item name="element_1">Brake System</item>
@@ -16,12 +41,12 @@
     </string-array>
 
     <string-array name="car_elements_information">
-        <item name="element_1">Brake System</item>
-        <item name="element_2">Emissions Control Lamp</item>
-        <item name="element_3">Engine Oil Level</item>
-        <item name="element_4">Doors</item>
-        <item name="element_5">Fuel Level</item>
-        <item name="element_6">Engine Cooling System</item>
+        <item name="element_1">Información sobre el sistema de frenos</item>
+        <item name="element_2">Códigos de error del Auto y posible solución</item>
+        <item name="element_3">Información sobre el estado del aceite</item>
+        <item name="element_4">Revisión de puertas</item>
+        <item name="element_5">Nivel de combustible y mediciones importantes</item>
+        <item name="element_6">Temperatura del Auto</item>
     </string-array>
 
     <string-array name="car_elements_images">
@@ -40,15 +65,32 @@
         <item name="row_3">Desgaste</item>
     </string-array>
 
+    <string-array name="element_1_values">
+        <item name="row_1">Estado óptimo</item>
+        <item name="row_2">N/A</item>
+        <item name="row_3">N/A</item>
+    </string-array>
+
     <string-array name="element_2_rows">
         <item name="row_1">Codigo de Error</item>
         <item name="row_2">Posible Solucion</item>
+    </string-array>
+
+    <string-array name="element_2_values">
+        <item name="row_1">Ninguno</item>
+        <item name="row_2">N/A</item>
     </string-array>
 
     <string-array name="element_3_rows">
         <item name="row_1">Nivel de aceite</item>
         <item name="row_2">Temperatura</item>
         <item name="row_3">Tiempo Desde el Utlimo Cambio</item>
+    </string-array>
+
+    <string-array name="element_3_values">
+        <item name="row_1">Estado óptimo</item>
+        <item name="row_2">97°C</item>
+        <item name="row_3">42 días</item>
     </string-array>
 
     <string-array name="element_4_rows">
@@ -60,6 +102,15 @@
         <item name="row_6">Baúl</item>
     </string-array>
 
+    <string-array name="element_4_values">
+        <item name="row_1">Cerrado</item>
+        <item name="row_2">Cerrado</item>
+        <item name="row_3">Abierto</item>
+        <item name="row_4">Cerrado</item>
+        <item name="row_5">Cerrado</item>
+        <item name="row_6">Cerrado</item>
+    </string-array>
+
     <string-array name="element_5_rows">
         <item name="row_1">Nivel de combustible</item>
         <item name="row_2">Rendimiento</item>
@@ -67,8 +118,19 @@
         <item name="row_4">Alcance</item>
     </string-array>
 
+    <string-array name="element_5_values">
+        <item name="row_1">70%</item>
+        <item name="row_2">N/A</item>
+        <item name="row_3">N/A</item>
+        <item name="row_4">200 Km</item>
+    </string-array>
+
     <string-array name="element_6_rows">
         <item name="row_1">Temperatura</item>
+    </string-array>
+
+    <string-array name="element_6_values">
+        <item name="row_1">97°C</item>
     </string-array>
 
     <string-array name="car_elements_rows">
@@ -80,10 +142,20 @@
         <item>@array/element_6_rows</item>
     </string-array>
 
+    <string-array name="car_elements_values">
+        <item>@array/element_1_values</item>
+        <item>@array/element_2_values</item>
+        <item>@array/element_3_values</item>
+        <item>@array/element_4_values</item>
+        <item>@array/element_5_values</item>
+        <item>@array/element_6_values</item>
+    </string-array>
+
 
     <string name="action_settings">Settings</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="title_activity_profile">ProfileActivity</string>
+    <string name="title_activity_bluetooth">BluetoothActivity</string>
 </resources>

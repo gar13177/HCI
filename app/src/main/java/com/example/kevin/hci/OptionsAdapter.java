@@ -2,6 +2,7 @@ package com.example.kevin.hci;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -64,9 +65,14 @@ public class OptionsAdapter extends BaseAdapter {
 
         holder.image = (ImageView) rowView.findViewById(R.id.option_menu_image);
         holder.image.setImageResource(image_resource[position]);
+        holder.image.setColorFilter(Color.BLACK);
 
         holder.information = (TextView) rowView.findViewById(R.id.option_menu_information);
         holder.information.setText(information_rows[position]);
+
+        if (options_rows[position].equals("Doors")){
+            rowView.findViewById(R.id.options_menu_row).setBackgroundColor(Color.parseColor("#FFE57219"));
+        }
 
 
         /*rowView.setOnClickListener(new View.OnClickListener() {

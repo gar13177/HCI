@@ -23,17 +23,23 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.TextView;
+import android.widget.Toast;
+
+import org.w3c.dom.Text;
+
+import java.util.List;
 
 public class CarElementActivity extends AppCompatActivity
             implements NavigationView.OnNavigationItemSelectedListener{
 
 
     private int color;
-    private String name ;
+    private static String name;
     private ListView listView;
     private String[] car_element_rows;
     private int image;
-    Toolbar toolbar;
+    private Toolbar toolbar;
 
 
 
@@ -57,6 +63,8 @@ public class CarElementActivity extends AppCompatActivity
         navigationView.setNavigationItemSelectedListener(this);
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+        fab.setImageResource(R.drawable.ic_home);
+        /*
         if (fab != null) {
             fab.getBackgroundTintList();
             fab.setOnClickListener(new View.OnClickListener() {
@@ -72,10 +80,13 @@ public class CarElementActivity extends AppCompatActivity
 
                 }
             });
-        }
+        }*/
 
         OptionsFragment f1 = new OptionsFragment();
-        changeFragment(f1);
+        FragmentManager fm = getFragmentManager();
+        FragmentTransaction ft = fm.beginTransaction();
+        ft.add(R.id.main_container, f1);
+        ft.commit();
 
 
 
@@ -119,31 +130,54 @@ public class CarElementActivity extends AppCompatActivity
 
     }
 
+    /*
     public void changeFragment(Fragment f1){
         FragmentManager fm = getFragmentManager();
         FragmentTransaction ft = fm.beginTransaction();
+
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setVisibility(View.VISIBLE);
 
         Bundle bundle = f1.getArguments();
+
+        this.name = "_";
         if (bundle != null) {
 
             setColor(bundle.getInt("setColor"));
-            setName(bundle.getString("setName"));
+            //System.out.println("Nombre obtenido: "+bundle.getString("setName"));
+            this.name = bundle.getString("setName");
+            //setName("Otro");
             setImage(bundle.getInt("setImage"));
 
         }else if (f1 instanceof OptionsFragment){
             fab.setVisibility(View.GONE);
             setColor(2);
+            this.name = "Options";
 
         }
 
 
 
         ft.replace(R.id.main_container, f1);
+        //ft.addToBackStack(null);
         ft.commit();
+    }
+    */
 
+    public void setButtonEnable(boolean bl){
+        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+        if (bl){
+            fab.setVisibility(View.VISIBLE);
+        }else{
+            fab.setVisibility(View.GONE);
+        }
+    }
+
+    public void setName(String str){
+
+        CollapsingToolbarLayout ctl = (CollapsingToolbarLayout)findViewById(R.id.toolbar_layout);
+        ctl.setTitle(str);
     }
 
     public void setColor(int i) {
@@ -151,28 +185,26 @@ public class CarElementActivity extends AppCompatActivity
         CollapsingToolbarLayout ctl = (CollapsingToolbarLayout)findViewById(R.id.toolbar_layout);
         //AppBarLayout fl = (AppBarLayout)findViewById(R.id.app_bar);
 
-
+        int color =color = getResources().getColor(R.color.colorPrimary);
 
         if (i == 0){//rojo
-            ctl.setContentScrimColor(getResources().getColor(R.color.colorEmergency));
-            ctl.setBackgroundColor(getResources().getColor(R.color.colorEmergency));
-            ctl.setStatusBarScrimColor(getResources().getColor(R.color.colorEmergency));
-            //fl.setBackgroundColor(Color.RED);
+            color = getResources().getColor(R.color.colorEmergency);
 
-        }else if (i == 1){//naranja
-            ctl.setContentScrimColor(getResources().getColor(R.color.colorWarning));
-            ctl.setBackgroundColor(getResources().getColor(R.color.colorWarning));
-            ctl.setStatusBarScrimColor(getResources().getColor(R.color.colorWarning));
-            //fl.setBackgroundColor(Color.parseColor("#FFE57219"));
 
-        }else{
-            ctl.setContentScrimColor(getResources().getColor(R.color.colorPrimary));
-            ctl.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
-            ctl.setStatusBarScrimColor(getResources().getColor(R.color.colorPrimary));
-            //fl.setBackgroundColor(Color.parseColor("#FF1D8DCE"));
+        }else if (i == 1) {//naranja
+            color = getResources().getColor(R.color.colorWarning);
+
         }
 
+        ctl.setContentScrimColor(color);
+        ctl.setBackgroundColor(color);
+        ctl.setStatusBarScrimColor(color);
 
+    }
+
+    public void setInformation(String str){
+        TextView iv = (TextView)findViewById(R.id.main_text_information);
+        iv.setText(str);
     }
 
     public int getColor() {
@@ -183,11 +215,7 @@ public class CarElementActivity extends AppCompatActivity
         return name;
     }
 
-    public void setName(String name) {
-        this.name = name;
-        //mToolbar.setTitle(name);
-        getSupportActionBar().setTitle(name);
-    }
+
 
     public void setImage(int image) {
         this.image = image;
@@ -239,11 +267,14 @@ public class CarElementActivity extends AppCompatActivity
             Intent myIntent = new Intent(CarElementActivity.this, ProfileActivity.class);
             CarElementActivity.this.startActivity(myIntent);
         } else if (id == R.id.nav_manage) {
-
+            Intent myIntent = new Intent(CarElementActivity.this, BluetoothActivity.class);
+            CarElementActivity.this.startActivity(myIntent);
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
+
+
 }

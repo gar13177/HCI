@@ -8,6 +8,7 @@ import android.app.Fragment;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
 import android.support.v7.app.ActionBarActivity;
+import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -31,6 +32,13 @@ public class OptionsFragment extends Fragment {
         // Required empty public constructor
     }
 
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        String name = getResources().getString(R.string.options_menu_name);
+        ((CarElementActivity)getActivity()).setName(name);
+        ((CarElementActivity)getActivity()).setButtonEnable(false);
+        super.onCreate(savedInstanceState);
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -39,9 +47,9 @@ public class OptionsFragment extends Fragment {
 
         View v = inflater.inflate(R.layout.fragment_options, container, false);
 
-
-
-        //((ActionBarActivity)getActivity()).getSupportActionBar().setTitle(R.string.options_menu_name);
+        String name = getResources().getString(R.string.options_menu_name);
+        ((CarElementActivity)getActivity()).setName(name);
+        ((CarElementActivity)getActivity()).setButtonEnable(false);
 
         name_rows = getResources().getStringArray(R.array.car_elements);
         information_rows = getResources().getStringArray(R.array.car_elements_information);
@@ -74,6 +82,8 @@ public class OptionsFragment extends Fragment {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
+
+
                 TypedArray evals = getResources().obtainTypedArray(R.array.car_elements_rows);
                 CharSequence[] str = evals.getTextArray(position);
                 String[] str2 = new String[str.length];
@@ -81,18 +91,36 @@ public class OptionsFragment extends Fragment {
                     str2[j] = str[j].toString();
                 }
 
+                TypedArray evals2 = getResources().obtainTypedArray(R.array.car_elements_values);
+                CharSequence[] str3 = evals2.getTextArray(position);
+                String[] str4 = new String[str3.length];
+                for (int j = 0; j < str3.length; j++) {
+                    str4[j] = str3[j].toString();
+                }
+
                 CarElementFragment fragment2 = new CarElementFragment();
 
                 Bundle bundle = new Bundle();
-                bundle.putInt("setColor", position % 3);
                 bundle.putString("setName", name_rows[position]);
+                if (name_rows[position].equals("Doors")) {
+                    bundle.putInt("setColor", 1);
+                } else{
+                    bundle.putInt("setColor", 2);
+                }
                 bundle.putStringArray("setCar_element_rows", str2);
+                bundle.putStringArray("setCar_element_values", str4);
                 bundle.putInt("setImage", images[position]);
+
+                ((CarElementActivity) getActivity()).setName(name_rows[position]);
+                ((CarElementActivity) getActivity()).setInformation(information_rows[position]);
 
                 fragment2.setArguments(bundle);
 
-                ((CarElementActivity)getActivity()).changeFragment(fragment2);
 
+                FragmentManager fm = getFragmentManager();
+                FragmentTransaction ft = fm.beginTransaction();
+                ft.replace(R.id.main_container, fragment2);
+                ft.commit();
             }
         });
 
@@ -100,4 +128,12 @@ public class OptionsFragment extends Fragment {
         return v;
     }
 
+    @Override
+    public void onResume() {
+        String name = getResources().getString(R.string.options_menu_name);
+        ((CarElementActivity)getActivity()).setName(name);
+        ((CarElementActivity)getActivity()).setButtonEnable(false);
+        super.onResume();
+
+    }
 }
