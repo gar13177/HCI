@@ -74,7 +74,7 @@ public class CarElementFragment extends Fragment {
                     //if (getColor() > 2) setColor(0);
                     //Intent myIntent = new Intent(CarElementActivity.this, OptionsActivity.class);
                     //CarElementActivity.this.startActivity(myIntent);
-
+                    ((CarElementActivity) getActivity()).setActualActivityName("home");
                     OptionsFragment fragment2 = new OptionsFragment();
                     FragmentManager fm = getFragmentManager();
                     FragmentTransaction ft = fm.beginTransaction();

@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.app.Fragment;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
+import android.support.design.widget.AppBarLayout;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
@@ -112,7 +113,9 @@ public class OptionsFragment extends Fragment {
                 bundle.putInt("setImage", images[position]);
 
                 ((CarElementActivity) getActivity()).setName(name_rows[position]);
+                ((CarElementActivity) getActivity()).setActualActivityName("element");
                 ((CarElementActivity) getActivity()).setInformation(information_rows[position]);
+                ((AppBarLayout)((CarElementActivity) getActivity()).findViewById(R.id.app_bar)).setExpanded(true);
 
                 fragment2.setArguments(bundle);
 

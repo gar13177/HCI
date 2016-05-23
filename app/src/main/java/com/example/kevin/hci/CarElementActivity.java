@@ -40,6 +40,7 @@ public class CarElementActivity extends AppCompatActivity
     private String[] car_element_rows;
     private int image;
     private Toolbar toolbar;
+    private String _activity = "home";
 
 
 
@@ -180,6 +181,10 @@ public class CarElementActivity extends AppCompatActivity
         ctl.setTitle(str);
     }
 
+    public void setActualActivityName(String str){
+        this._activity = str;
+    }
+
     public void setColor(int i) {
         color = i;
         CollapsingToolbarLayout ctl = (CollapsingToolbarLayout)findViewById(R.id.toolbar_layout);
@@ -229,6 +234,14 @@ public class CarElementActivity extends AppCompatActivity
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
+        } else if (this._activity.equals("element")){
+            this._activity = "home";
+            OptionsFragment f1 = new OptionsFragment();
+            FragmentManager fm = getFragmentManager();
+            FragmentTransaction ft = fm.beginTransaction();
+            ft.replace(R.id.main_container, f1);
+            ft.commit();
+
         } else {
             super.onBackPressed();
         }
@@ -243,6 +256,8 @@ public class CarElementActivity extends AppCompatActivity
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
+            Intent myIntent = new Intent(CarElementActivity.this, BluetoothActivity.class);
+            CarElementActivity.this.startActivity(myIntent);
             return true;
         }
 
