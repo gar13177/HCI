@@ -4,7 +4,9 @@ package com.example.kevin.hci;
 import android.app.Fragment;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.design.widget.CollapsingToolbarLayout;
@@ -34,6 +36,8 @@ public class CarElementActivity extends AppCompatActivity
             implements NavigationView.OnNavigationItemSelectedListener{
 
 
+    SharedPreferences sharedpreferences;
+    //public static final String MyPREFERENCES = "MyPrefs" ;
     private int color;
     private static String name;
     private ListView listView;
@@ -82,6 +86,8 @@ public class CarElementActivity extends AppCompatActivity
                 }
             });
         }*/
+
+
 
         OptionsFragment f1 = new OptionsFragment();
         FragmentManager fm = getFragmentManager();
@@ -268,6 +274,16 @@ public class CarElementActivity extends AppCompatActivity
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_car_element, menu);
+        TextView nav_name = (TextView)findViewById(R.id.nav_name_header);
+        TextView nav_info = (TextView)findViewById(R.id.nav_info_header);
+
+        sharedpreferences = getSharedPreferences("MyPrefs", Context.MODE_PRIVATE);
+
+        if (nav_name != null)
+            nav_name.setText(sharedpreferences.getString("nameKey", "edit profile"));
+
+        if(nav_info != null)
+            nav_info.setText(sharedpreferences.getString("emergenciaKey", "edit profile"));
         return true;
     }
 
