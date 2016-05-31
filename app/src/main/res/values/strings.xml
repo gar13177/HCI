@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">HCI</string>
+    <string name="app_name">Car Buddy</string>
     <string name="title_activity_car_element">CarElementActivity</string>
     <string name="options_menu_name">Home</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
@@ -66,9 +66,9 @@
     </string-array>
 
     <string-array name="element_1_values">
-        <item name="row_1">Estado óptimo</item>
-        <item name="row_2">N/A</item>
-        <item name="row_3">N/A</item>
+        <item name="row_1">no_connection</item>
+        <item name="row_2">no_connection</item>
+        <item name="row_3">no_connection</item>
     </string-array>
 
     <string-array name="element_2_rows">
@@ -77,8 +77,8 @@
     </string-array>
 
     <string-array name="element_2_values">
-        <item name="row_1">Ninguno</item>
-        <item name="row_2">N/A</item>
+        <item name="row_1">no_connection</item>
+        <item name="row_2">no_connection</item>
     </string-array>
 
     <string-array name="element_3_rows">
@@ -88,9 +88,9 @@
     </string-array>
 
     <string-array name="element_3_values">
-        <item name="row_1">Estado óptimo</item>
-        <item name="row_2">97°C</item>
-        <item name="row_3">42 días</item>
+        <item name="row_1">no_connection</item>
+        <item name="row_2">no_connection</item>
+        <item name="row_3">no_connection</item>
     </string-array>
 
     <string-array name="element_4_rows">
@@ -103,12 +103,12 @@
     </string-array>
 
     <string-array name="element_4_values">
-        <item name="row_1">Cerrado</item>
-        <item name="row_2">Cerrado</item>
-        <item name="row_3">Abierto</item>
-        <item name="row_4">Cerrado</item>
-        <item name="row_5">Cerrado</item>
-        <item name="row_6">Cerrado</item>
+        <item name="row_1">no_connection</item>
+        <item name="row_2">no_connection</item>
+        <item name="row_3">no_connection</item>
+        <item name="row_4">no_connection</item>
+        <item name="row_5">no_connection</item>
+        <item name="row_6">no_connection</item>
     </string-array>
 
     <string-array name="element_5_rows">
@@ -119,10 +119,10 @@
     </string-array>
 
     <string-array name="element_5_values">
-        <item name="row_1">70%</item>
-        <item name="row_2">N/A</item>
-        <item name="row_3">N/A</item>
-        <item name="row_4">200 Km</item>
+        <item name="row_1">no_connection</item>
+        <item name="row_2">no_connection</item>
+        <item name="row_3">no_connection</item>
+        <item name="row_4">no_connection</item>
     </string-array>
 
     <string-array name="element_6_rows">
@@ -130,7 +130,7 @@
     </string-array>
 
     <string-array name="element_6_values">
-        <item name="row_1">97°C</item>
+        <item name="row_1">no_connection</item>
     </string-array>
 
     <string-array name="car_elements_rows">

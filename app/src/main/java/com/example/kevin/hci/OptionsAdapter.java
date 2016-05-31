@@ -70,9 +70,7 @@ public class OptionsAdapter extends BaseAdapter {
         holder.information = (TextView) rowView.findViewById(R.id.option_menu_information);
         holder.information.setText(information_rows[position]);
 
-        if (options_rows[position].equals("Doors")){
-            rowView.findViewById(R.id.options_menu_row).setBackgroundColor(Color.parseColor("#FFE57219"));
-        }
+
 
 
         /*rowView.setOnClickListener(new View.OnClickListener() {

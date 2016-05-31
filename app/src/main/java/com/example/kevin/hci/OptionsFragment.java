@@ -103,11 +103,8 @@ public class OptionsFragment extends Fragment {
 
                 Bundle bundle = new Bundle();
                 bundle.putString("setName", name_rows[position]);
-                if (name_rows[position].equals("Doors")) {
-                    bundle.putInt("setColor", 1);
-                } else{
-                    bundle.putInt("setColor", 2);
-                }
+
+                bundle.putInt("setColor", 2);
                 bundle.putStringArray("setCar_element_rows", str2);
                 bundle.putStringArray("setCar_element_values", str4);
                 bundle.putInt("setImage", images[position]);
